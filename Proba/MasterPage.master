@@ -1,0 +1,94 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+   <link href = "Style.css" rel = "stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" >
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap&subset=latin-ext" rel="stylesheet">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <form id="form1" runat="server">
+    
+        <div id="header"
+            class="clearfix"
+            >
+	
+		    <div id="logo">
+			<img src="images/9.png" alt="logo" runat="server">
+		    </div>
+		
+		    <div id="slogan">
+			<p>Audentes <a href="#">fortuna iuvat</a> </p>
+            </div>
+              <% if (!Request.IsAuthenticated)
+                 { %>
+             <a href="Login.aspx" id="loginLink" >Login</a>
+             <%}
+              else
+                { %>
+             <asp:LinkButton ID="LogoutButton1" runat="server" OnClick="LogoutButton1_Click" >Logout</asp:LinkButton>
+             <% } %>
+	    </div><!-- end #header -->
+
+        <div id="nav">
+
+            
+		<ul>
+			<li><a href="Default.aspx">Home page</a></li>
+			
+			<li><a href="Products.aspx">Products</a>
+			<%--	<ul>
+					<li><a href="#">podstavka 1</a></li>
+					<li><a href="#">podstavka 2</a></li>
+					<li><a href="#">podstavka 3</a></li>
+				</ul>--%>
+			</li>
+			<%--<li><a href="About.aspx">About us</a></li>
+            <li><a href="Contact.aspx">Contact</a></li>--%>
+		</ul>
+		
+	<div id= "social">
+	<a href="#"><i class="fab fa-facebook"></i></a>
+	<a href="#"><i class="fab fa-instagram"></i></a>
+	<a href="#"><i class="fab fa-twitter-square"></i></a>
+	</div>	
+	
+	</div><!-- end #nav -->
+
+  
+
+      <%-- <div id="sidebar">
+           <asp:Image ID="Image1" runat="server" ImageUrl="images/555.jpg" />
+           <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+           <asp:TreeView ID="TreeView1" runat="server"  DataSourceID="SiteMapDataSource1" ></asp:TreeView>
+
+             </div><!-- end #sidebar -->--%>
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div id="footer">
+		<p>Copyright &copy; Dara Atanacković</p>
+	    </div><!-- end #footer -->
+
+    </form>
+	
+	
+	
+</div><!-- end #wrapper -->
+</body>
+
+</html>
